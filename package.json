@@ -1,0 +1,13 @@
+{
+  "name": "fitapp-mobile",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "better-sqlite3": "^7.6.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
