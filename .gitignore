@@ -1,1 +1,6 @@
-notepad .gitignore
+.idea/
+node_modules/
+fitapp.db
+*.pyc
+__pycache__/
+.env

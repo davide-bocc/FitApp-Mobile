@@ -5,7 +5,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "better-sqlite3": "^7.6.2"
+    "better-sqlite3": "^7.6.2",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "jest": "^29.7.0"
