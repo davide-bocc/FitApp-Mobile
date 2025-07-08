@@ -26,7 +26,7 @@ export class WorkoutManager {
   ): Promise<boolean> {
     try {
       await db.executeSql(
-        `INSERT INTO Exercises (name, sets, reps, rest_seconds, workout_id) 
+        `INSERT INTO Exercises (name, sets, reps, rest_seconds, workout_id)
          VALUES (?, ?, ?, ?, ?)`,
         [name, sets, reps, restSeconds, workoutId]
       );

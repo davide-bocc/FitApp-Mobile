@@ -1,13 +1,29 @@
-import { sha256 } from 'react-native-sha256';
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
-type UserRole = 'coach' | 'student';
+const firebaseConfig = {
+  // La tua configurazione Firebase
+};
 
-export async function register(
-  email: string,
-  password: string,
-  role: UserRole
-): Promise<boolean> {
-  const encryptedPass = await sha256(password);
-  // Logica salvataggio su SQLite
-  return true;
-}
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+export const AuthService = {
+  async register(email, password, userType) {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      return { success: true, user: userCredential.user };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  },
+
+  async login(email, password) {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      return { success: true, user: userCredential.user };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  }
+};
