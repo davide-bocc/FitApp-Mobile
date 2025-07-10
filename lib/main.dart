@@ -1,11 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';  // File generato automaticamente (vedi sotto)
+import 'firebase_options.dart';
+
+import 'pages/login_page.dart';
+import 'pages/register_page.dart';
+import 'pages/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
     await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,  // Configurazione multi-piattaforma
+      options: DefaultFirebaseOptions.currentPlatform,
     );
     runApp(MyApp());
   } catch (e) {
@@ -25,7 +30,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'FitApp',
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),  // Pagina iniziale
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => const LoginPage(),
+        '/register': (context) => const RegisterPage(),
+        '/home': (context) => const HomePage(),
+      },
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
     );
   }
 }
